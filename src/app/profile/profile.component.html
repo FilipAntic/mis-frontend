@@ -1,0 +1,46 @@
+<div class="container-fluid" *ngIf="user">
+  <div class="row">
+    <div class="col-md-3">
+      <img src="assets/profile.png" alt="">
+    </div>
+    <div class="col-md-6">
+
+      <div *ngIf="canEditProfile(); else elseTemplate">
+        <p>Email: {{user.email}} </p>
+        <p *ngIf="user.firstName">First name: {{user.firstName}}</p>
+        <p *ngIf="user.lastName">Last name: {{user.lastName}}</p>
+        <p *ngIf="user.description">Description: {{user.description}}</p>
+
+      </div>
+
+      <ng-template #elseTemplate>
+        <form (ngSubmit)="update()" [formGroup]="updateForm">
+          <div class="form">
+            <label for="mail">Email</label> <br />
+            <input #mail type="text" [formControlName]="'email'"> <br />
+            <label for="firstName">First name:</label> <br />
+            <input #firstName type="text" [formControlName]="'firstName'"> <br />
+            <label for="lastName">Last name:</label> <br />
+            <input #lastName type="text" [formControlName]="'lastName'"> <br />
+            <label for="description">Description</label> <br />
+            <input #description type="text" [formControlName]="'description'"> <br />
+            <button class="btn btn-success mt-3">Update profile</button>
+          </div>
+          <br>
+        </form>
+        <form (ngSubmit)="updatePassword()" [formGroup]="updatePasswordForm">
+          <div class="form">
+            <label for="oldPassword">Old password:</label> <br />
+            <input #oldPassword type="password" [formControlName]="'oldPassword'"> <br />
+            <label for="newPassword">New password:</label> <br />
+            <input #newPassword type="password" [formControlName]="'newPassword'"> <br />
+            <label for="repeatedPassword">Repeated password:</label> <br />
+            <input #repeatedPassword type="password" [formControlName]="'repeatedPassword'"> <br />
+            <button class="btn btn-success mt-3">Change password</button>
+          </div>
+          <br>
+        </form>
+      </ng-template>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="row masthead text-center text-white">
+
+    <div class="masthead-content">
+      <div class="container">
+        <h1 class="masthead-heading mb-0">Joy of learning</h1>
+        <h4 class="masthead-subheading mb-0">Celebrate the season with courses from just $10.99</h4>
+        <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
+      </div>
+    </div>
+    <div class="bg-circle-1 bg-circle"></div>
+    <div class="bg-circle-2 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div>
+    <div class="bg-circle-4 bg-circle"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2" *ngFor="let course of courses">
+      <div class="card m-2 border-secondary" style="width: 18rem;">
+        <img class="card-img-top" src="assets/profile.png" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{course.name}}</h5>
+          <a [routerLink]="['profile', course.author._id]">{{course.author.email}}</a> <br>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

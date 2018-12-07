@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <a class="navbar-brand" routerLink="/">
+    <img src="/assets/logo.png" width="50px">
+    Udemy
+  </a>
+
+  <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Item 1</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/myCourses" *ngIf="auth.isAuthenticated()">My courses</a>
+      </li>
+      <li class="nav-item">
+        <button class="btn btn-default nav-button nav-button-login" [routerLink]="['profile', auth.getId()]" *ngIf="auth.isAuthenticated()">
+          <i class="pi pi-user"></i>
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="btn btn-default nav-button nav-button-login" routerLink="/login" *ngIf="!auth.isAuthenticated()">Log
+          in</button>
+      </li>
+      <li class="nav-item">
+        <button class="btn btn-default nav-button default-color" routerLink="/register" *ngIf="!auth.isAuthenticated()">Sign
+          up</button>
+      </li>
+      <li class="nav-item">
+        <button class="btn btn-default nav-button nav-button-login" (click)="logout()" *ngIf="auth.isAuthenticated()">Log
+          out</button>
+      </li>
+    </ul>
+  </div>
+</nav>

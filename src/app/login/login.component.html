@@ -1,0 +1,14 @@
+<div class="container h-100 d-flex justify-content-center">
+  <div class=" my-auto">
+    <form (ngSubmit)="login()" [formGroup]="loginForm">
+      <div class="form">
+        <label for="mail">Email/Username</label> <br />
+        <input #mail type="text" [formControlName]="'email'"> <br />
+        <label for="name">Password</label> <br />
+        <input #name type="password" [formControlName]="'password'"> <br />
+        <button class="myBtn">Log in</button>
+      </div>
+      <br>
+    </form>
+  </div>
+</div>
